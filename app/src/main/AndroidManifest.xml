@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.co.itforone.jewelleryshen">
+    <!-- 인터넷 (일반권한) -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 전화걸기 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 전화권한-전화번호읽기 -->
+    <!-- Grants the READ_PHONE_STATE permission only on devices that run
+         Android 10 (API level 29) and lower. -->
+    <!--<uses-permission android:name="READ_PHONE_STATE" android:maxSdkVersion="29" />
+    <uses-permission android:name="READ_PHONE_NUMBERS" />-->
+    <!-- 저장소 읽기/쓰기 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- 카메라 권한/기능 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <queries>
+        <package android:name="com.kakao.talk"/>            <!-- 카카오톡 -->
+        <package android:name="com.kbcard.cxh.appcard"/>    <!-- KBPAY -->
+        <package android:name="viva.republica.toss"/>       <!-- 토스 -->
+        <package android:name="kvp.jjy.MispAndroid320"/>    <!-- 페이북 -->
+        <package android:name="com.nhnent.payapp"/>         <!-- 페이코 -->
+        <package android:name="com.kakaopay.app"/>          <!-- 카카오페이 -->
+        <package android:name="com.lottemembers.android"/>  <!-- 롯데멤버스 -->
+        <package android:name="com.lcacApp"/>               <!-- 롯데 앱카드 -->
+        <package android:name="com.samsung.android.spay"/>  <!-- 삼성페이 -->
+        <package android:name="com.ssg.serviceapp.android.egiftcertificate"/> <!-- SSG페이 -->
+        <package android:name="com.naverfin.payapp"/>       <!-- 네이버페이 -->
+        <package android:name="com.TouchEn.mVaccine.webs"/>       <!-- 네이버페이 -->
+        <package android:name="com.wooricard.smartapp"/>    <!-- 우리WON카드 -->
+        <package android:name="com.hyundaicard.appcard"/>   <!-- 현대 앱카드 -->
+        <package android:name="com.shcard.smartpay"/>       <!-- 신한 앱카드 -->
+        <package android:name="nh.smart.nhallonepay"/>      <!-- 농협 올원페이 -->
+        <package android:name="com.kebhana.hanapush"/>      <!-- 하나원큐 -->
+        <package android:name="com.hanaskcard.paycla"/>
+        <package android:name="com.hanabank.ebk.channel.android.hananbank"/><!-- (구)하나원큐 -->
+        <package android:name="kr.co.citibank.citimobile"/> <!-- 씨티스마트 -->
+        <package android:name="kr.co.samsungcard.mpocket"/> <!-- 삼성 앱카드 -->
+        <package android:name="com.kbstar.reboot"/>
+        <package android:name="com.wooribank.smart.npib"/>
+
+        <!-- 계좌이체 -->
+        <package android:name="com.kftc.bankpay.android"/>  <!-- 뱅크페이 -->
+        <package android:name="com.kbstar.liivbank"/> <!-- 국민 뉴리브 -->
+        <package android:name="com.nh.cashcardapp"/> <!-- NH 앱캐시 -->
+        <package android:name="kr.co.kfcc.mobilebank"/> <!-- MG상상뱅크 -->
+        <package android:name="com.knb.psb"/> <!-- MG상상뱅크 -->
+
+    </queries>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:hardwareAccelerated="false"
+        android:usesCleartextTraffic="false"
+        android:networkSecurityConfig="@xml/network_security_config"
+        >
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="kr.co.itforone.jewelleryshen.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity android:name=".MainActivity" android:screenOrientation="portrait" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:host="jwauction.app" android:scheme="jwauction" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".SplashActivity" android:screenOrientation="portrait" android:exported="true">
+        </activity>
+
+        <service
+            android:name=".MyFirebaseMessagingService"
+            android:stopWithTask="false"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/white" />
+
+
+
+    </application>
+
+</manifest>

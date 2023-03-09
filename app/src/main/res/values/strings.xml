@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">쥬픽</string>
+    <string name="domain">http://itforone.com/~jewelleryshen/app/</string>
+    <string name="domain_check">itforone.com/~jewelleryshen/</string>
+    <string name="index">http://itforone.com/~jewelleryshen/app/index.php</string>
+    <string name="guide">http://itforone.com/~jewelleryshen/app/guide.php</string>
+</resources>
